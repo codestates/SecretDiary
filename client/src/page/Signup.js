@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const endpoint = "http://ec2-3-35-51-96.ap-northeast-2.compute.amazonaws.com"
+
 const Signup = () => {
 
   const[user, setUser] = useState('');
@@ -14,10 +16,10 @@ const Signup = () => {
   const signup = () => {
     if (user === ''){
       window.alert("잘못된 유저이름 형식입니다.")
-      return
+      return;
     } else if (pwd === verPwd){
       axios
-        .post(`http://localhost:4000/signup`, {
+        .post(`${endpoint}/signup`, {
           user: user,
           userName: userName,
           password: pwd,
