@@ -15,6 +15,7 @@ app.use(
       'https://localhost:4000',
       'http://localhost:3000',
       'http://localhost:4000',
+      'http://secretdiary-part6.s3-website.ap-northeast-2.amazonaws.com',
     ],
     credentials: true,
     methods: ['GET', 'POST'],
