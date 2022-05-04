@@ -49,5 +49,11 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "proxy": {
+    "/api": {
+      "target": "https://www.hyodee.link",
+      "changeOrigin": true
+    }
+  }
 }
