@@ -2,12 +2,18 @@ import { React, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { url } from '../util/getUrl';
+// import { url } from '../util/getUrl';
+
+const {
+  NODE_ENV,
+  REACT_APP_API_DOMAIN,
+  REACT_APP_EC2_HTTP,
+  // REACT_APP_EC2_HTTPS,
+} = process.env;
+export const url =
+  NODE_ENV === 'development' ? REACT_APP_EC2_HTTP : REACT_APP_API_DOMAIN;
 
 const Signup = () => {
-  console.log('ENV?', process.env.NODE_ENV);
-  console.log('url?', url);
-
   const [user, setUser] = useState('');
   const [userName, setUserName] = useState('');
   const [pwd, setPwd] = useState('');
@@ -15,6 +21,9 @@ const Signup = () => {
   const history = useNavigate();
 
   const signup = () => {
+    console.log('ENV?', NODE_ENV);
+    console.log('url?', url);
+
     if (user === '') {
       window.alert('잘못된 유저이름 형식입니다.');
       return;
