@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import Login from './page/Login';
 import Main from './page/Main';
 import Diary from './page/Diary';
@@ -8,7 +7,6 @@ import Signup from './page/Signup';
 import Mypage from './page/Mypage';
 import Mydiary from './page/Mydiary';
 import './App.css';
-import Register from './Register';
 
 function App() {
   return (

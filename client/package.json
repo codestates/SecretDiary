@@ -45,17 +45,6 @@
       "last 1 safari version"
     ]
   },
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
-  "proxy": {
-    "/api": {
-      "target": "https://www.hyodee.link",
-      "changeOrigin": true
-    }
-  },
   "devDependencies": {
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",

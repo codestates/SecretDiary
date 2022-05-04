@@ -2,10 +2,11 @@ import { React, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { url } from '../../util/getUrl';
+import { url } from '../util/getUrl';
 
 const Signup = () => {
   console.log('ENV?', process.env.NODE_ENV);
+  console.log('url?', url);
 
   const [user, setUser] = useState('');
   const [userName, setUserName] = useState('');
