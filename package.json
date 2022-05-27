@@ -1,0 +1,23 @@
+{
+    "name": "secretdiary",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hosik-GitHub/SecretDiary.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/hosik-GitHub/SecretDiary/issues"
+    },
+    "homepage": "https://github.com/hosik-GitHub/SecretDiary#readme",
+    "dependencies": {
+        "prop-types": "^15.8.1",
+        "sequelize": "^6.19.0"
+    }
+}
