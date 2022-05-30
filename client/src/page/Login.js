@@ -48,7 +48,11 @@ const Login = ({handleResponseSuccess, setIsLogin, setAuthenticate}) => {
 
     try {
       const response = await axios.post(
+<<<<<<< HEAD
         `${url}/signup`,
+=======
+        `${url}/login`,
+>>>>>>> b82056d ([frontend&backend] Modified developing environment)
         JSON.stringify({ user, pwd }),
 
         {
@@ -67,8 +71,16 @@ const Login = ({handleResponseSuccess, setIsLogin, setAuthenticate}) => {
       setUser('');
       setPwd('');
       setSuccess(true);
+<<<<<<< HEAD
       setIsLogin(true)
       handleResponseSuccess()
+=======
+      console.log('hellohiworld')
+      setIsLogin(true)
+      console.log('love',setIsLogin)
+      handleResponseSuccess()
+      console.log('heart')
+>>>>>>> b82056d ([frontend&backend] Modified developing environment)
     } catch (err) {
       if (!err?.response) {
         setErrMsg('No Server Response');

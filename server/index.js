@@ -17,6 +17,8 @@ app.use(
       'https://localhost:4000',
       'http://localhost:3000',
       'http://localhost:4000',
+      'http://localhost:80',
+      'https://localhost:80',
       'http://secretdiary-part6.s3-website.ap-northeast-2.amazonaws.com',
       'https://secretdiary-part6.s3-website.ap-northeast-2.amazonaws.com',
       'https://server.secretdiary.org',
@@ -35,24 +37,39 @@ app.get('/', (req, res) => {
   res.send('health check');
 });
 
-// app.post('/signup', (req, res) => {
-//   console.log('req.body');
-//   res.send('signup test');
-// });
+
+app.post('/signup', (req, res) => {
+  console.log('req.body');
+  res.send('signup test');
+});
+
+app.get('/login', (req, res) => {
+  console.log('login check');
+  res.send('login check');
+});
+
+app.post('/login', (req, res) => {
+  console.log('login?');
+  res.send('login test yeah');
+});
+
+app.post('/logout', (req, res) => {
+  console.log('logout?');
+  res.send('logout test yeah');
+});
+
 
 app.post('/signup', controllers.signup);
 app.post('/login', controllers.login);
 app.post('/logout', controllers.logout)
 
-app.get('/login', (req, res) => {
-  console.log('req.body');
-  res.send('login test');
-});
+
 
 
 
 // app.get('/accesstokenrequest', controllers.accessTokenRequest);
 // app.get('/refreshtokenrequest', controllers.refreshTokenRequest);
+
 
 const HTTPS_PORT = process.env.HTTPS_PORT || 80;
 
