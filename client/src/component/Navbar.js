@@ -5,7 +5,7 @@ import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../../src/image/logo.svg"
-const Navbar = ({ authenticate, setAuthenticate }) => {
+const Navbar = ({ authenticate, setAuthenticate , handleLogout, isLogin}) => {
  
   let [width, setWidth] = useState(0);
   let navigate = useNavigate();
@@ -37,21 +37,41 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <div className="burger-menu hide">
           <FontAwesomeIcon icon={faBars} onClick={() => setWidth(250)} />
         </div>
-        {authenticate ? (
+        <span>
+    {
+        isLogin === false ? <nav>
+            
+            <a href="/signup">회원가입</a>
+            <a href="/">로그인</a>
+            
+        </nav> : 
+        <nav>
+            <a href="/diary">다이어리</a>
+            <a href="/friends">친구목록</a>
+            <a href="/mypage">마이페이지</a>
+            <a href="/main">메인페이지</a>
+            <a href="/mydiary">마이다이어리</a>
+            
+            <button onClick={handleLogout}>Logout</button>
+            
+        </nav>
+        }
+    </span>
+        {/* {authenticate ? (
           <div onClick={() => setAuthenticate(false)}>
             <FontAwesomeIcon icon={faUser} />
             <span>로그아웃</span>
           </div>
         ) : (
-          <div onClick={() => navigate("/")}>
+          <div onClick={() => navigate("/main")}>
             <FontAwesomeIcon icon={faUser} />
-            <span>로그인</span>
+            <span>로그인이다</span>
           </div>
-        )}
+        )} */}
       </div>
 
       <div className="nav-logo">
-        <Link to="/">
+        <Link to="/diary">
           <img src={logo}
             width={100}
             
@@ -59,7 +79,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         </Link>
       </div>
       <div class="nav-menu-area">
-        <ul className="menu">
+        {/* <ul className="menu">
           <li>
           <a href="/">로그인</a>
           <a href="/diary">일기쓰기</a>
@@ -68,7 +88,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
           <a href="/mypage">마이페이지</a>
           <a href="/logout">로그아웃</a>
           </li>
-        </ul>
+        </ul> */}
 
         <div className="search-box">
           <FontAwesomeIcon icon={faSearch} />

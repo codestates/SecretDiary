@@ -1,12 +1,13 @@
 import React from 'react';
-import Navbar from '../component/Navbar';
-import main from '../image/main.svg'
 
+import main from '../image/main.svg'
+import {  useState } from 'react';
 const Main = () => {
+  let [authenticate, setAuthenticate] = useState(false);
   return (
     <div>
-      <Navbar/>
-      <img src={main} alt="main-image"></img>
+      
+      <img src={main} alt="main-image" authenticate={authenticate} setAuthenticate={setAuthenticate} ></img>
     </div>
   );
 }

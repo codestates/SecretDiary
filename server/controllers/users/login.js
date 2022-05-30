@@ -1,32 +1,20 @@
-const { Users } = require('../../models');
-const {
-  generateAccessToken,
-  generateRefreshToken,
-  sendRefreshToken,
-  sendAccessToken,
-} = require('../tokenFunctions');
+const { User } = require('../../models');
+const { createAccessToken, sendAccessToken, isAuthorized } = require('../tokenFunctions');
 
-module.exports = (req, res) => {
-  const { email, password } = req.body;
-  Users.findOne({
-    where: {
-      email,
-      password,
-    },
+module.exports = async (req, res) => {
+  // cookie가 생성이 안됨!
+  
+  const userinfo = await User.findOne({
+    where : { email : req.body.email }
   })
-    .then((data) => {
-      if (!data) {
-        // return res.status(401).send({ data: null, message: 'not authorized' });
-        return res.json({ data: null, message: 'not authorized' });
-      }
-      delete data.dataValues.password;
-      const accessToken = generateAccessToken(data.dataValues);
-      const refreshToken = generateRefreshToken(data.dataValues);
+  console.log(userinfo)
+  const password = isAuthorized(userinfo.dataValues.password)
+  console.log(password)
 
-      sendRefreshToken(res, refreshToken);
-      sendAccessToken(res, accessToken);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if (req.body.password !== password.password) {
+    return res.status(404).send('invalid password')
+  } else {
+    const accessToken = createAccessToken(userinfo.dataValues.password)
+    res.status(201).send(userinfo.dataValues)
+  }
 };
